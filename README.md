@@ -1,2 +1,2 @@
-objc-style-guide
+URBN Objective-C Style Guide
 ================
