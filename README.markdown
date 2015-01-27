@@ -8,6 +8,7 @@ This style guide outlines the coding conventions of the iOS team at URBN. We use
 * [Naming](#naming)
 * [Properties](#properties)
 * [Methods](#methods)
+* [Conditionals](#conditionals)
 
 ## Whitespace
 * Use vertical white space judiciously to organize units of code, especially within method bodies. 
@@ -152,12 +153,36 @@ URBNTextField.h
     return string;
 }
 ```
+## Conditionals
+* Conditionals should **always** utilize curly braces. Even if it can be written on a single line.
+* Curly braces should open on the same line as the condition and close on their own line.
+* Each keyword in a conditional (`if/else if/else`) should begin on their own line. Do not place a keyword on the same line as a closing brace from the previous condition.
+* The final conditional in a group of conditions should be followed by a single empty line unless it is the end of a method, conditional, block, etc.
+* There should be a single space between the keyword, condtion, and curly brace.
+* There should be no empty line at the top or bottom of a conditional body (much like a method body).
 
+**Example**
+```obj
+if (condition == 0) {
+    return 0;
+}
+else if (otherCondition == 1 && condition == 1) {
+    myString = @"BOOM";
+    return 1;
+}
+else {
+    [self doSomethingElseHere];
+} 
+```
+### Ternary Operator
+* Ternary operators should only be used to express simple conditions.
+* Use a single space to separate segments of the ternary statement.
 
-
-
-
-
-
-
-
+**This**
+```objc
+result = a > b ? x : y;
+```
+**Not This**
+```objc
+result = a > b ? x = c > d ? c : d : y;
+```
