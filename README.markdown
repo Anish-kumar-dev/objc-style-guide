@@ -7,6 +7,7 @@ This style guide outlines the coding conventions of the iOS team at URBN. We use
 * [Modern Objective-C](#modern-objective-c)
 * [Naming](#naming)
 * [Properties](#properties)
+* [Methods](#methods)
 
 ## Whitespace
 * Use vertical white space judiciously to organize units of code, especially within method bodies. 
@@ -98,6 +99,7 @@ URBNTextField.h
 * Properties should be explicitly declared with atomicity & memory management rules every time in that order. Optionally you can declare access rules and conventions after atomicity & memory management.
 * Dot syntax should be used to access properties instead of bracket syntax.
 * There should be exactly one space between the `@property` keyword and the qualifiers. One space between the qualifiers and the type. And (if applicable) a space before the pointer with the point attached to the property name.
+* Property names should read like a noun.
 
 **This**
 ```objc
@@ -111,7 +113,45 @@ URBNTextField.h
 @property (weak) NSObject *myOtherObject;
 ```
 
+## Methods
+* Methods should be small units of code that accomplish a single task. Endless methods that contain a menagerie of logic are not preferred.
+* Method names should read like a sentence.
+* Methods should have a space after the scope identifier (+/-). No space after the return type and a space between each segment. There should be no spaces within the segments (except for pointer syntax in parameter types).
+* There should not be an empty line at the beginning or ending of a method.
+* There should be exactly 1 line between methods.
+* There should be no space between a `#pragma mark` and the following method.
+* Calls to `super` should always have an empty line following them.
+* `return`s should allows have an empty line before them.
+* Use single empty lines within methods to group code logically.
+* Method signatures in implementation files should flow naturally and not have returns between the segments. The practice of method segments on new lines is *acceptable* for complex method signatures in header files.
 
+**Examples**
+```objc
+@interface MyClass : UIViewController
+
+- (NSString *)doSomethingWithObject:(id)object string:(NSString *)string index:(int)index;
+```
+```objc
+@implementation MyClass
+
+#pragma mark - LifeCycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    UILabel *lbl = [UILabel new];
+    [self.view addSubview:lbl];
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:self.myImage];
+    [self.view addSubview:imgView];
+}
+
+#pragma mark - MyClass
+- (NSString *)doSomethingWithObject:(id)object string:(NSString *)string index:(int)index {
+    string = [string stringByAppendingString:@"BOOM"];
+    
+    return string;
+}
+```
 
 
 
