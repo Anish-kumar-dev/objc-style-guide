@@ -9,6 +9,7 @@ This style guide outlines the coding conventions of the iOS team at URBN. We use
 * [Properties](#properties)
 * [Methods](#methods)
 * [Conditionals](#conditionals)
+* [House Keeping](#house-keeping)
 
 ## Whitespace
 * Use vertical white space judiciously to organize units of code, especially within method bodies. 
@@ -186,3 +187,11 @@ result = a > b ? x : y;
 ```objc
 result = a > b ? x = c > d ? c : d : y;
 ```
+
+## House Keeping
+* With the exception of documentation comments please refrain from multiline comments. Your code should be self documenting enough to not require such lengthy explainations. If you find yourself requiring more than a line to explain what you are doing, that may be an indication that you need to rethink what you are doing.
+* Please use `#pragma` preprocessor directive to mark to do's. And please ensure to do's follow this format:
+  * `#pragma TODO: Instructions for todo`
+* If you are doing something just for testing purposes and want to ensure that a particular piece of code does not ship, please use the `#warning` preprocessor directive.
+* On that note, please ensure that you do not ship an app with warnings. You may even want to treat warnings as errors.
+
