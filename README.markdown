@@ -98,6 +98,7 @@ URBNTextField.h
 
 ## Properties
 * As previously stated, properties are to be used instead of iVars.
+* The only exception is the iVar that backs a property should be used in `init` and `dealloc` methods to prevent side effects for non-fully initialized objects. See Apple’s [Programming with Objective-C](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html#//apple_ref/doc/uid/TP40011210-CH5-SW11)
 * Properties should be explicitly declared with atomicity & memory management rules every time in that order. Optionally you can declare access rules and conventions after atomicity & memory management.
 * Dot syntax should be used to access properties instead of bracket syntax.
 * There should be exactly one space between the `@property` keyword and the qualifiers. One space between the qualifiers and the type. And (if applicable) a space before the pointer with the point attached to the property name.
